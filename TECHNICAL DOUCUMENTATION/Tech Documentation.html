@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Documentation Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="body">
+    <button id="toggler" class="toggler">Menu</button>
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-container">
+            <button id="close">*</button>
+            <header>
+                <h1>Javascript Array Methods</h1>
+            </header>
+            <ul class="link">
+                <li><a href="#introduction" class="nav-link">Introduction</a></li>
+                <li><a href="#Looping_through_an_Array" class="nav-link">Looping through an Array</a></li>
+                <li><a href="#pop_and_push" class="nav-link">pop and push</a></li>
+                <li><a href="#shift_and_unshift" class="nav-link">shift and unshift</a></li>
+                <li><a href="#slice_and_splice" class="nav-link">slice and splice</a></li>
+                <li><a href="#includes_and_indexOf" class="nav-link">includes and indexOf</a></li>
+                <li><a href="#map_and_filter" class="nav-link">map and filter</a></li>
+                <li><a href="#reduce" class="nav-link">reduce</a></li>
+                <li><a href="#every_and_some" class="nav-link">every and some</a></li>
+                <li><a href="#toString_and_Array.from" class="nav-link">toString and Array.from</a></li>
+            </ul>
+        </div>      
+    </nav>
+    <main id="main-doc">
+        <section class="main-section" id="introduction">
+            <header>
+                <h1>Introduction</h1>
+            </header>
+            <p>
+                An array is a data type provided by javaScript specifically for storing sequences
+                of values. It is written as a list of values between square
+                brackets, separated by commas.The notation for getting at the elements inside an array also uses square
+                brackets. A pair of square brackets immediately after an expression, with
+                another expression inside of them, will look up the element in the left-hand
+                expression that corresponds to the index given by the expression in the brackets.
+
+            </p>
+            <p>
+                The first index of an array is zero, not one. So the first element is retrieved
+                with [0]. Zero-based counting has a long tradition in technology
+                and in certain ways makes a lot of sense, but it takes some getting used to.
+                Think of the index as the amount of items to skip, counting from the start of
+                the array.
+            </p>
+            <p>
+                <ul class="tech-list">
+                    <span>Key array concepts:</span>
+                    <li>The elements in an array are stored as the array’s properties, using numbers
+                        as property names.</li>
+                    <li> Those elements are accessed via bracket notation</li>
+                    <li> The length property of an array tells us how many elements it has.</li>
+                    <li> An array unlike strings are mutable i.e they can be changed for convenience.</li>
+                </ul>
+            </p>
+        </section>
+        <section class="main-section" id="Looping_through_an_Array">
+            <header>
+                <h1>Looping through an Array</h1>
+            </header>
+<code class="code">
+  let example = [1, 45, 'one', 'two', 14];
+  for(let i = 0; i < example.length; i++) {
+  let entry = example[i];
+  // Do something with entry
+  }
+</code>
+            <p>
+                This kind of loop is common in classical JavaScript—going over arrays one
+                element at a time is something that comes up a lot, and to do that you’d run
+                a counter over the length of the array and pick out each element in turn.
+                There is a simpler way to write such loops in modern JavaScript.
+                When a for loop looks like this, with the word of after a variable definition,
+                it will loop over the elements of the value given after of. This works not only
+                for arrays but also for strings and some other data structures.
+            </p>
+<code class="code">
+  let example = [1, 45, 'one', 'two', 14];
+  for (exam of example) {
+    // Do something with exam
+  }
+    // or
+  example.forEach({
+    //loop through example
+    });
+    </code>
+        </section>
+        <section class="main-section" id="pop_and_push">
+            <header>
+                <h1>pop and push</h1>
+            </header>
+<code class="code">
+  let example = [1, 45, 'one', 'two', 14];
+  example.push(15);
+  console.log(example);
+  // returns [1, 45, 'one', 'two', 14, 15];
+  console.log(example.pop());
+  // returns [1, 45, 'one', 'two', 14];
+</code>
+            <p>
+                The push method adds values to the end of an array, and the pop method
+                does the opposite, removing the last value in the array and returning it.
+                This methods mutates the array i.e it changes the array. In functional programming, its common practice to make a copy of an array for any intended mutation.
+            </p>
+        </section>
+        <section class="main-section" id="shift_and_unshift">
+            <header>
+                <h1>shift and unshift</h1>
+            </header>
+            <p>
+               The shift and unshift methods works basically like pop and push with the key difference being that 
+                shift adds a value to the begining of the array and unshift deletes from the begining of the array.
+            </p>
+        </section>
+        <section class="main-section" id="slice_and_splice">
+            <header>
+                <h1>slice and splice</h1>
+            </header>
+            <p>
+                Another fundamental array method is slice, which takes start and end indices
+                and returns an array that has only the elements between them.
+                <ul class="tech-list">
+                    <span>Parameters</span>
+                    <li>The start index is inclusive.</li>
+                    <li> The end index exclusive.</li>
+                    <li> When the end index is not given, slice will take all of the elements after the
+                        start index.
+                    </li>
+                    <li> You can also omit the start index to copy the entire array.</li>
+                </ul>
+            </p>
+            <p>
+                Slice does not mutate the array, it makes a copy of the array and returns that copy.
+                Splice on the otherhand mutates the array and deletes all values of the array not covered in the index given.
+            </p>
+<code class="code">
+ let example = [1, 45, 'one', 'two', 14];
+  let one = example.slice(1);
+  console.log(one);
+  // returns [45, 'one', 'two', 14];
+  console.log(example);
+  // returns [1, 45, 'one', 'two', 14];
+  // original array does not change
+  example.splice(1);
+  console.log(example);
+  // returns [45, 'one', 'two', 14];  
+  // original array changes.
+</code>
+        </section>
+        <section class="main-section" id="includes_and_indexOf">
+            <header>
+                <h1>includes and indexOf</h1>
+            </header>
+            <p>
+                Arrays have an includes method that checks whether a given value exists in
+                the array. It returns true if the value is included in the array and false if it's not included. 
+            </p>
+            <p>
+                The indexOf method is a powerful array method for searching for values in an array. The indexOf method returns the index of the value given as an argument if it's in the array and it returns -1 if its not found in the array.
+            </p>
+        </section>
+        <section class="main-section" id="map_and_filter">
+            <header>
+                <h1>map and filter</h1>
+            </header>
+            <p>
+               The map() method creates a new array populated with the results of calling a provided function on every element in the array.
+               The filter() method creates a new array with all elements that pass the test implemented by the provided function.
+            </p>
+            <p>
+                The map() and filter() method takes three arguments
+                <ul class="tech-list">
+                    <span>Parameters</span>
+                    <li>CurrentValue: The current element being processed</li>
+                    <li>Index: The index of the current element being processed in the array</li>
+                    <li>The array map() or filter() was called upon</li>
+                </ul>
+            </p>
+<code class="code">
+  let example = [1, 3, 5, 7, 10];
+  console.log(example.map(e => e * 2));
+  // returns [2, 6, 10, 14, 20];
+  console.log(example.filter(e => e >= 5));
+  // returns [5, 7, 10];
+</code>
+        </section>
+        <section class="main-section" id="reduce">
+            <header>
+                <h1>reduce</h1>
+            </header>
+            <p>
+               A common thing to do with arrays is to compute a single value from them. The high-order operation that represents this pattern is called <em>reduce</em>
+               It builds a value by repeatedly taking a single element
+               from the array and combining it with the current value. When summing numbers,
+               you’d start with the number zero and, for each element, add that to the sum.
+            </p>
+            <p>
+                The parameters for reduce() are
+                <ul class="tech-list">
+                    <span>Parameters</span>
+                    <li>A combining function</li>
+                    <li>A start value usually Zero</li>
+                    <li>The array reduce() was called upon</li>
+                    <li>If your array contains at least one element,
+                        you are allowed to leave off the start argument. The method will take the first
+                        element of the array as its start value and start reducing at the second element.
+                    </li>
+                </ul>
+            </p>
+<code class="code">
+  let example = [1, 3, 5, 7, 10];
+  console.log(example.reduce((a, b) => {
+      a + b;
+  });
+  // returns [26];
+  console.log(example.reduce((a, b) => {
+      a + b;
+   }, 5);
+  // returns [31]; with 5 as the start value
+</code>
+        </section>
+        <section class="main-section" id="every_and_some">
+            <header>
+                <h1>every and some</h1>
+            </header>
+            <p>
+               The every() method is called on an array to see if every value in the array passes a defined test. it returns a boolean value.
+               The some() method checks to see if at least one of the values of the array passes the set test. it returns a boolean as the result. 
+            </p>
+<code class="code">
+  let example = [1, 3, 5, 7, 10];
+  console.log(example.every(s => s > 4);
+  // returns false;
+  console.log(example.some(s => s > 4);
+  // returns true;
+</code>
+        </section>
+        <section class="main-section" id="toString_and_Array.from">
+            <header>
+                <h1>toString and Array.from</h1>
+            </header>
+            <p>
+              The toString() method converts all the elements within an array into a string. The Array.from() static method generates an array from an array-like or iterable object.
+            </p>
+            <p>
+                The parameters for Array.from() are
+                <ul class="tech-list">
+                    <span>Parameters</span>
+                    <li>An array like object to convert to an array</li>
+                    <li>A map function to call on every element of the array</li>
+                </ul>
+            </p>
+<code class="code">
+  let example = [1, 3, 5, 7, 10];
+  console.log(example.reduce((a, b) => {
+      a + b;
+  });
+  // returns [26];
+  console.log(Array.from('Array'));
+  // returns ['A', 'r', 'r', 'a', 'y'];
+  console.log(Array.from(example, x => x + x));
+  // returns [2, 6, 10, 14, 20];
+</code>
+    <h1>More Information</h1>
+<p>
+    For more information about javascript arrays and it's methods checkout this <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">MDN Page</a>
+</p>
+        </section>
+        
+    </main>
+
+<script>
+    const btn = document.getElementById('toggler');
+    const links = document.getElementById('sidebar');
+    const closeBtn = document.getElementById("close");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    btn.addEventListener('click', () => {
+        document.getElementById('sidebar').classList.add("show");
+    });
+    closeBtn.addEventListener('click', () => {
+        links.classList.remove('show');
+    })
+
+    navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            links.classList.remove("show");
+        })
+    })
+    
+</script>
+</body>
+</html>

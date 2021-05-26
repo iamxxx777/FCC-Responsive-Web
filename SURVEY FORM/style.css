@@ -1,0 +1,67 @@
+.mains {
+    background: #333 url(../Images/aerial.jpg);
+    max-width: 100%;
+    height: auto;
+    padding: 5px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: nunito, sans-serif;
+    font-weight: 600;
+    line-height: 1.5;
+    white-space: wrap;
+}
+  .main {
+    width: 95%;
+    margin: 20px auto;
+    padding: 20px 0;
+    background-color: #eaeaea;
+  }
+  
+  #survey-form {
+    padding: 20px;
+  }
+  #title {
+    text-align: center;
+    font-weight: 700;
+  }
+  #description {
+    text-align: center;
+    font-weight: 600;
+    padding: 5px 8px;
+  }
+  .shift {
+    margin-left: 8px;
+    font-size: 15px;
+  }
+  .tag {
+    margin-bottom: 5px;
+  } 
+   
+  
+  @media (min-width: 768px) {   
+    .main {
+      width: 70%;
+      margin: 20px auto;
+      padding: 20px 0;
+      background-color: #eaeaea;
+    }
+  }
+  
+  @media (min-width: 992px) {   
+    .main {
+      width: 60%;
+      margin: 20px auto;
+      padding: 20px 0;
+      background-color: #eaeaea;
+    }
+  }
+  
+  @media (min-width: 1200px) {   
+    .main {
+      width: 50%;
+      margin: 20px auto;
+      padding: 20px 0;
+      background-color: #eaeaea;
+    }
+  }
